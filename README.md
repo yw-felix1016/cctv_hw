@@ -1,6 +1,6 @@
 # 数据管道技术岗位笔试题
 
-笔试材料地址：https://gitlab.com/media-c/interview.git
+笔试材料地址：https://gitlab.com/ls84/interview.git
 
 克隆此项目仓库，完成以下题目。把结果推送至公网地址，如gitlab或github。你的commit历史也是考核的依据，请展示一个清晰有逻辑的工作过程。
 
