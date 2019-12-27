@@ -1,0 +1,30 @@
+FROM centos
+
+MAINTAINER "bigdata_yw_coast@yeah.net"
+
+# 安装python环境
+RUN set -ex \
+    && yum install -y wget tar libffi-devel zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make initscripts \
+    && wget https://www.python.org/ftp/python/3.5.0/Python-3.5.0.tgz \
+    && tar -zxvf Python-3.5.0.tgz \
+    && cd Python-3.5.0 \
+    && ./configure prefix=/usr/local/python3 \
+    && make \
+    && make install \
+    && make clean \
+    && cd .. \
+    && rm -rf /Python-3.5.0* \
+    && yum install -y epel-release \
+    && yum install -y python-pip
+    
+RUN pip install pandas
+
+RUN mkdir -p /opt/data/file/
+RUN mkdir -p /opt/data/src/
+
+ADD tags.tsv /opt/data/file/
+ADD src.py /opt/data/src/
+
+CMD python /opt/data/src.py
+
+
